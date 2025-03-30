@@ -92,32 +92,34 @@ const BLELock = () => {
 
 
     // Lock or Unlock the Bluetooth NFC Lock
-    const toggleLock = async (command) => {
+    const toggleLock = async () => {
         if (!connectedDevice) {
             Alert.alert('Error', 'No device connected');
             return;
         }
 
         try {
-            const characteristicUUID = '00002a39-0000-1000-8000-00805f9b34fb'; // Example UUID
-            const serviceUUID = '0000180f-0000-1000-8000-00805f9b34fb'; // Example Service UUID
+            const serviceUUID = '0000180f-0000-1000-8000-00805f9b34fb';
+            const characteristicUUID = '00002a39-0000-1000-8000-00805f9b34fb';
 
-            // Command to lock/unlock
-            const commandBuffer = Buffer.from(command).toString('base64');
+            // Use the correct command based on lock state
+            const command = isLocked ? 'U' : 'L'; // 'U' for Unlock, 'L' for Lock
+            const commandBuffer = new TextEncoder().encode(command); // Encoding the command
 
             await connectedDevice.writeCharacteristicWithResponseForService(
                 serviceUUID,
                 characteristicUUID,
-                commandBuffer
+                Buffer.from(commandBuffer).toString('base64')
             );
 
-            setIsLocked(command === 'LOCK');
-            Alert.alert('Success', `Device ${command === 'LOCK' ? 'locked' : 'unlocked'}`);
+            setIsLocked(!isLocked);
+            Alert.alert('Success', `Device ${isLocked ? 'unlocked' : 'locked'}`);
         } catch (error) {
             console.error('Toggle failed:', error);
             Alert.alert('Error', 'Failed to send lock/unlock command');
         }
     };
+
 
     return (
         <View style={{ padding: 20 }}>
