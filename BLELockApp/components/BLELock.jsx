@@ -18,12 +18,12 @@ const BLELock = () => {
                 PermissionsAndroid.PERMISSIONS.BLUETOOTH_CONNECT,
                 PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
             ])
-            .then((result) => {
-                console.log('Permissions granted:', result);
-            })
-            .catch((error) => {
-                console.error('Permissions error:', error);
-            });
+                .then((result) => {
+                    console.log('Permissions granted:', result);
+                })
+                .catch((error) => {
+                    console.error('Permissions error:', error);
+                });
         }
 
         // Initialize Bluetooth manager
@@ -61,13 +61,31 @@ const BLELock = () => {
     const connectToDevice = async (device) => {
         try {
             const connected = await bleManager.connectToDevice(device.id);
-            console.log('Connected to', connected.name);
+            console.log("Connected to", connected.name);
             setConnectedDevice(connected);
+
+            // Discover services and characteristics
+            await connected.discoverAllServicesAndCharacteristics();
+            console.log("Services discovered");
+
+            // Subscribe to characteristic for NFC data
+            const characteristicUUID = "your_characteristic_uuid"; // Replace with actual UUID
+            connected.monitorCharacteristicForService(
+                "your_service_uuid",
+                characteristicUUID,
+                (error, characteristic) => {
+                    if (error) {
+                        console.log("Error reading data:", error);
+                        return;
+                    }
+                    console.log("Received NFC Data:", characteristic?.value);
+                }
+            );
         } catch (error) {
-            console.log('Connection failed:', error);
-            Alert.alert('Error', 'Failed to connect to device');
+            console.log("Connection failed:", error);
         }
     };
+
 
     // Lock or Unlock the Bluetooth NFC Lock
     const toggleLock = async (command) => {
