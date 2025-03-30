@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "buffer": "^6.0.3",
     "react": "19.0.0",
     "react-native": "0.78.1",
     "react-native-ble-manager": "^12.1.4",

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, FlatList, PermissionsAndroid, Platform, Alert } from 'react-native';
 import { BleManager } from 'react-native-ble-plx';
+import { Buffer } from 'buffer';
+
+// buffer package provides the Buffer class for environments where it is not avaible natively, assigning this, it will be accesible in this application
+global.Buffer = global.Buffer || Buffer;
 
 // Initialize the BLE manager globally
 const bleManager = new BleManager();
