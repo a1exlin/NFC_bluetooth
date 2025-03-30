@@ -28,6 +28,10 @@ type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
+import { SafeAreaView } from 'react-native';
+
+import BLELock from './components/BLELock';
+
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -103,6 +107,7 @@ function App(): React.JSX.Element {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
+          <BLELock/>
         </View>
       </ScrollView>
     </View>
