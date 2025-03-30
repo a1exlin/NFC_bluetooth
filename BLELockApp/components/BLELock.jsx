@@ -61,34 +61,48 @@ const BLELock = () => {
         };
     }, []);
 
-    // Connect to a device
-    const connectToDevice = async (device) => {
-        try {
-            const connected = await bleManager.connectToDevice(device.id);
-            console.log("Connected to", connected.name);
-            setConnectedDevice(connected);
-
-            // Discover services and characteristics
-            await connected.discoverAllServicesAndCharacteristics();
-            console.log("Services discovered");
-
-            // Subscribe to characteristic for NFC data
-            const characteristicUUID = "your_characteristic_uuid"; // Replace with actual UUID
-            connected.monitorCharacteristicForService(
-                "your_service_uuid",
-                characteristicUUID,
-                (error, characteristic) => {
-                    if (error) {
-                        console.log("Error reading data:", error);
-                        return;
-                    }
-                    console.log("Received NFC Data:", characteristic?.value);
-                }
-            );
-        } catch (error) {
-            console.log("Connection failed:", error);
+  // Connect to a device
+const connectToDevice = async (device) => {
+    try {
+      console.log("Attempting to connect to", device.name);
+  
+      // Establish connection
+      const connected = await bleManager.connectToDevice(device.id, { autoConnect: true });
+      console.log("Connected to", connected.name);
+      setConnectedDevice(connected);
+  
+      // Discover services and characteristics
+      await connected.discoverAllServicesAndCharacteristics();
+      console.log("Services and characteristics discovered");
+  
+      // Update with the actual service and characteristic UUIDs
+      const serviceUUID = "0000180f-0000-1000-8000-00805f9b34fb"; // Example: Battery Service
+      const characteristicUUID = "00002a39-0000-1000-8000-00805f9b34fb"; // Example: Lock control
+  
+      // Subscribe to characteristic for NFC data
+      connected.monitorCharacteristicForService(
+        serviceUUID,
+        characteristicUUID,
+        (error, characteristic) => {
+          if (error) {
+            console.log("Error reading data:", error);
+            return;
+          }
+          if (characteristic?.value) {
+            const data = Buffer.from(characteristic.value, 'base64').toString('utf-8');
+            console.log("Received NFC Data:", data);
+          } else {
+            console.log("Characteristic has no value");
+          }
         }
-    };
+      );
+  
+      console.log("Monitoring characteristic for NFC data...");
+    } catch (error) {
+      console.log("Connection failed:", error);
+    }
+  };
+  
 
 
     // Lock or Unlock the Bluetooth NFC Lock
