@@ -2,11 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
-	<!-- added code for NFC Bluetooth -->
+		<!-- added code for NFC Bluetooth -->
+
 		<key>NSBluetoothAlwaysUsageDescription</key>
-		<string>This app uses Bluetooth to connect to a BLE lock device.</string>
+		<string>This app uses Bluetooth to connect to devices.</string>
+		<key>NSBluetoothPeripheralUsageDescription</key>
+		<string>This app requires Bluetooth access to function properly.</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
-		<string>App needs location access to discover BLE devices.</string>
+		<string>Location access is required for Bluetooth scanning.</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>Location access is required for Bluetooth scanning.</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>Location access is required for Bluetooth scanning.</string>
+
 
 		<key>CFBundleDevelopmentRegion</key>
 		<string>en</string>
