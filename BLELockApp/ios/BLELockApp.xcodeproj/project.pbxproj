@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		190B9B242D9A530900450AE6 /* Buzz_Photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 190B9B232D9A530900450AE6 /* Buzz_Photo.png */; };
 		635043824B9F40F0154FAC76 /* Pods_BLELockApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1434AE552E59A5EBDFC9DE /* Pods_BLELockApp.framework */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -20,6 +21,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BLELockApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BLELockApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = BLELockApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		190B9B232D9A530900450AE6 /* Buzz_Photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Buzz_Photo.png; sourceTree = "<group>"; };
 		3192A1E381679E3931FD9AA2 /* Pods-BLELockApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLELockApp.debug.xcconfig"; path = "Target Support Files/Pods-BLELockApp/Pods-BLELockApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4D1434AE552E59A5EBDFC9DE /* Pods_BLELockApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BLELockApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = BLELockApp/AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				190B9B232D9A530900450AE6 /* Buzz_Photo.png */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				190B9B242D9A530900450AE6 /* Buzz_Photo.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				A38086BCF55F8591D48CCE68 /* PrivacyInfo.xcprivacy in Resources */,
 			);

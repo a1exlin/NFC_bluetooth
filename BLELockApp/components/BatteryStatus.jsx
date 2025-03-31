@@ -12,7 +12,7 @@ const BatteryStatus = ({ batteryLevel }) => {
 const styles = StyleSheet.create({
     batteryContainer: {
         backgroundColor: '#2e2e2e',
-        padding: 15,
+        padding: 8,
         borderRadius: 8,
         marginTop: 20,
         alignItems: 'center',

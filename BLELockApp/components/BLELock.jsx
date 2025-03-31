@@ -1,24 +1,13 @@
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList, PermissionsAndroid, Platform, Alert, StyleSheet } from 'react-native';
 import { BleManager } from 'react-native-ble-plx';
 import { Buffer } from 'buffer';
 
-
-
-
 // buffer package provides the Buffer class for environments where it is not available natively
 global.Buffer = global.Buffer || Buffer;
 
-
 // Initialize the BLE manager globally
 const bleManager = new BleManager();
-
 
 const BLELock = () => {
    const [devices, setDevices] = useState([]);
@@ -42,13 +31,11 @@ const BLELock = () => {
                });
        }
 
-
        return () => {
            bleManager.stopDeviceScan();
            bleManager.destroy();
        };
    }, []);
-
 
    const startScan = () => {
        setDevices([]);
@@ -57,7 +44,6 @@ const BLELock = () => {
                console.log('Error during scan:', error);
                return;
            }
-
 
            if (device && device.name) {
                console.log('Found device:', device.name);
@@ -78,14 +64,12 @@ const BLELock = () => {
        }, 5000);
    };
 
-
    const connectToDevice = async (device) => {
        try {
            console.log("Attempting to connect to", device.name);
            const connected = await bleManager.connectToDevice(device.id, { autoConnect: true });
            console.log("Connected to", connected.name);
            setConnectedDevice(connected);
-
 
            await connected.discoverAllServicesAndCharacteristics();
            console.log("Services and characteristics discovered");
