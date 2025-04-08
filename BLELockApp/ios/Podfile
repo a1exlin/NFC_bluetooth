@@ -1,6 +1,3 @@
-
-
-
 platform :ios, '16.0'
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
@@ -9,16 +6,31 @@ target 'BLELockApp' do
   use_frameworks!
   config = use_native_modules!
 
-  use_react_native!(
-    :path => config[:reactNativePath],
-    :hermes_enabled => true
-  )
+  use_react_native!(:path => config[:reactNativePath])
 
   # BLE Manager dependency
   pod 'RNBleManager', :path => '../node_modules/react-native-ble-manager'
-
+  
+  # Screen navigation dependency
+  pod 'RNScreens', :path => '../node_modules/react-native-screens'
+  
   # Permissions for BLE on iOS
   pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
+  
+  # Gesture Handler for navigation
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+  # Safe Area Context for handling safe areas
+  pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
+
+  # Reanimated for animations
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
+  # Vector Icons for icon support
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  # Device Info for device-specific details
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
   post_install do |installer|
     react_native_post_install(installer)
